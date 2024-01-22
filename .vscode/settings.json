@@ -3,8 +3,10 @@
     "Antd",
     "codegen",
     "demodemo",
+    "inferencer",
     "Kbar",
     "nestjs",
+    "Ntim",
     "refinedev"
   ]
 }
