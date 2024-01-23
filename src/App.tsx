@@ -1,5 +1,5 @@
-import { Authenticated, GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { Authenticated, Refine } from "@refinedev/core";
+import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import { useNotificationProvider } from "@refinedev/antd";
@@ -15,11 +15,11 @@ import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { ForgotPassword, Home, Login, Register } from "./pages";
 import Layout from "./components/layout";
+import { resources } from "./config/resource";
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
           <AntdApp>
             <DevtoolsProvider>
@@ -27,6 +27,7 @@ function App() {
                 dataProvider={dataProvider}
                 liveProvider={liveProvider}
                 notificationProvider={useNotificationProvider}
+                resources={resources}
                 routerProvider={routerBindings}
                 authProvider={authProvider}
                 options={{
@@ -62,7 +63,7 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
+              {/* <DevtoolsPanel /> */}
             </DevtoolsProvider>
           </AntdApp>
       </RefineKbarProvider>
