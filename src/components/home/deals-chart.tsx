@@ -11,7 +11,7 @@ import { DashboardDealsChartQuery } from "@/graphql/types"
 
 const DealsChart = () => {
   const { data } = useList<GetFieldsFromList<DashboardDealsChartQuery>>({
-    resource: 'dealsStage',
+    resource: 'dealStages',
     filters: [
       {
         field: 'title', operator: 'in', value: ['WON', 'LOST']
