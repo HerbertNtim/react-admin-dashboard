@@ -21,26 +21,25 @@ const CompanyList = () => {
         },
       ];
     },
-    });
     pagination: {
       pageSize: 12
     },
     sorters: {
       initial: [
         {
-          field: "createdAt",
-          order: "desc",
-        },
-      ],
+          field: 'createdAt',
+          order: 'desc'
+        }
+      ]
     },
     filters: {
       initial: [
-          {
-              field: "name",
-              operator: "contains",
-              value: undefined,
-          },
-      ],
+        {
+          field: 'name',
+          operator: 'contains',
+          value: undefined
+        }
+      ]
     },
     meta: {
       gqlQuery: COMPANIES_LIST_QUERY
