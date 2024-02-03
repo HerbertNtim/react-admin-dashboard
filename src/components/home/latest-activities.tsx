@@ -41,7 +41,7 @@ const LatestActivities = () => {
 
   return (
     <Card
-      bodyStyle={{ padding: '0 1rem' }}
+      bodyStyle={{ padding: '0 2rem' }}
       headStyle={{ padding: '16px' }}
       title={(
         <div 
@@ -79,7 +79,7 @@ const LatestActivities = () => {
                   title={dayjs(deal?.createdAt).format('MMM DD, YYYY - HH:mm')}
                   avatar={
                     <CustomAvatar
-                      shape='square'
+                      shape='circle'
                       size={48}
                       src={deal?.company.avatarUrl}
                       name={deal?.company.name}
