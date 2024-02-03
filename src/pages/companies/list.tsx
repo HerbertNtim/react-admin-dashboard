@@ -17,7 +17,7 @@ const CompanyList = () => {
         {
           field: "name",
           operator: "contains",
-          value: values.name,
+          value: values,
         },
       ];
     },
