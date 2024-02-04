@@ -19,6 +19,7 @@ import { resources } from "./config/resource";
 import CompanyList from "./pages/companies/list";
 import CreateCompany from "./pages/companies/create";
 import EditCompany from "./pages/companies/edit";
+import TaskList from "./pages/tasks/list";
 
 function App() {
   return (
@@ -63,6 +64,9 @@ function App() {
                       <Route index element={<CompanyList />} />
                       <Route path="new" element={<CreateCompany />}/>
                       <Route path="edit/:id" element={<EditCompany />}/>
+                    </Route>
+                    <Route path='/tasks'>
+                      <Route index element={<TaskList />} />
                     </Route>
                   </Route>
                 </Routes>
