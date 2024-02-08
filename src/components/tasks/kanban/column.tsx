@@ -1,9 +1,10 @@
-import { useDroppable } from "@dnd-kit/core"
-import { Badge, Button, Space } from "antd"
-import { PlusOutlined } from "@ant-design/icons"
-import { Text } from "@/components/text"
+import { Text } from '@/components/text'
+import { PlusOutlined } from '@ant-design/icons'
+import { useDroppable } from '@dnd-kit/core'
+import { Badge, Button, Space } from 'antd'
+import React from 'react'
 
-const KanbanColumn = ({ children }: React.PropsWithChildren) => {
+const KanbanColumn = ({children}: React.PropsWithChildren) => {
   const { isOver, setNodeRef, active } = useDroppable({
     id: '',
     data: ''
@@ -12,7 +13,6 @@ const KanbanColumn = ({ children }: React.PropsWithChildren) => {
   const count = 3
   const description = 'Description'
   const title = 'Title'
-
   const onAddClickHandler = () => {}
 
   return (
@@ -26,16 +26,18 @@ const KanbanColumn = ({ children }: React.PropsWithChildren) => {
     >
       <div
         style={{
-          padding: '12px',
-          height: '100vh',
+          padding:'12px'
         }}
       >
-        <Space style={{ width: '100%', justifyContent: 'space-between'}}>
+        <Space style={{
+          width: '100%',
+          justifyContent: 'space-between'
+        }}>
           <Space>
             <Text
-              ellipsis={{ tooltip: title }}
               strong
               size='xs'
+              ellipsis={{ tooltip: title }}
               style={{
                 textTransform: 'uppercase',
                 whiteSpace: 'nowrap'
@@ -43,10 +45,10 @@ const KanbanColumn = ({ children }: React.PropsWithChildren) => {
             >
               {title}
             </Text>
+            {!!count && <Badge count={count} color='cyan' />}
           </Space>
-          {!!count && <Badge count={count} color="cyan" />}
-          <Button
-            shape="circle"
+          <Button 
+            shape='circle'
             icon={<PlusOutlined />}
             onClick={onAddClickHandler}
           />
@@ -56,9 +58,9 @@ const KanbanColumn = ({ children }: React.PropsWithChildren) => {
       <div
         style={{
           flex: 1,
-          overflow: active ? 'unset' : 'scroll',
+          overflowY: active ? 'unset' : 'scroll',
           border: '2px dashed transparent',
-          borderColor: isOver ? '#00040' : 'transparent',
+          borderColor: isOver ? '#000040' : 'transparent',
           borderRadius: '4px'
         }}
       >
