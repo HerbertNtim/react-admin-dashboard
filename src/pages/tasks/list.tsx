@@ -92,12 +92,12 @@ const TaskList = ({ children }: React.PropsWithChildren) => {
   // Drag and drop functionalities
   const handleOnDragEnd = (event: DragEndEvent) => {
     let stageId = event.over?.id as undefined | string | null
-    const taskId = event.active.data.current?.stageId 
+    const taskId = event.active.id as string
     const taskStageId = event.active.data.current?.stageId
 
     if(taskStageId === stageId) return;
 
-    if(taskStageId === 'unassigned') {
+    if(stageId === 'unassigned') {
       stageId = null
     }
 
