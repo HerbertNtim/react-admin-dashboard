@@ -23,7 +23,7 @@ export {
 }
 
 export * from './accordion'
-
+export * from './text'
 export * from './tasks/form/description'
 export * from './tasks/form/due-date'
 export * from './tasks/form/header'
