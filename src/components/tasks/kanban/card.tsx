@@ -7,6 +7,7 @@ import { TextIcon } from "./text-icon"
 import dayjs from "dayjs"
 import { getDateColor } from "@/utilities"
 import CustomAvatar from "@/components/custom-avatar"
+import { useDelete, useNavigation } from "@refinedev/core"
 
 type ProjectCardProps = {
   id: string,
@@ -23,7 +24,8 @@ type ProjectCardProps = {
 const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
   const { token } = theme.useToken()
 
-  const edit = () => {}
+  const { edit } = useNavigation()
+  const { mutate } = useDelete()
 
   const dropdownItems = useMemo(() => {
     const dropdownItems: MenuProps['items'] = [
@@ -32,7 +34,7 @@ const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
         key: '1',
         icon: <EyeOutlined />,
         onClick: () => {
-          edit()
+          edit('tasks', id, 'replace')
         }
       },
       {
@@ -40,7 +42,16 @@ const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
         label: 'Delete card',
         key: '2',
         icon: <DeleteOutlined />,
-        onClick: () => {}
+        onClick: () => {
+          mutate({
+            resource: 'tasks',
+            id,
+            meta: {
+              operation: 'task'
+            }
+
+          })
+        }
       }
     ]
 
@@ -74,12 +85,18 @@ const ProjectCard = ({ id, title, dueDate, users }: ProjectCardProps) => {
       <Card
         size="small"
         title={<Text ellipsis={{tooltip: title}}>{title}</Text>}
-        onClick={() => edit()}
+        onClick={() => edit('tasks', id, 'replace' )}
         extra={
           <Dropdown
             trigger={['click']}
             menu={{
-              items: dropdownItems
+              items: dropdownItems,
+              onPointerDown: (e) => {
+                e.stopPropagation()
+              },
+              onClick: (e) => {
+                e.domEvent.stopPropagation()
+              }
             }}
             placement="bottom"
             arrow={{ pointAtCenter: true }}
